@@ -5,7 +5,7 @@ const knex = require('knex');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.DATABASE_URL;
 const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
@@ -15,9 +15,9 @@ const db = knex({
   client: 'pg',
   connection: {
     host: '127.0.0.1',
-    user: 'postgres',
-    password: 'new',
-    database: 'smart-brain',
+    user: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DB,
   },
 });
 const register = require('./controllers/register');
