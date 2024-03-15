@@ -28,7 +28,7 @@ const image = require('./controllers/image');
 const saltRounds = 10; // for bcrypt
 
 app.get('/', (req, res) => {
-  res.send(db.users);
+  res.send('it is working');
 });
 app.post('/signin', signin.handleSignIn(db, bcrypt));
 app.post('/register', (req, res) => {
