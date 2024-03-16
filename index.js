@@ -1,4 +1,5 @@
 const express = require('express');
+const app = express();
 require('dotenv').config();
 const { Pool } = require('pg');
 const knex = require('knex');
@@ -6,9 +7,21 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
 const PORT = process.env.PORT || 3000;
-const app = express();
 
 app.use(express.json());
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested, Content-Type, Accept Authorization'
+  );
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', 'POST, PUT, PATCH, GET, DELETE');
+    return res.status(200).json({});
+  }
+  next();
+});
 app.use(cors());
 app.use(bodyParser.json());
 const db = knex({
