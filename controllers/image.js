@@ -1,37 +1,9 @@
 const { ClarifaiStub, grpc } = require('clarifai-nodejs-grpc');
 // const Clarifai = require('clarifai');
-const PAT = process.env.API_KEY;
-// Specify the correct user_id/app_id pairings
-// Since you're making inferences outside your app's scope
-const USER_ID = process.env.USER_ID;
-const APP_ID = process.env.APP_ID;
-// Change these to whatever model and image URL you want to use
+const PAT = '981e9e4c64504e9ea20b68908fb60552';
+const USER_ID = '7bw8yfvn31nd';
+const APP_ID = 'test';
 
-// const raw = JSON.stringify({
-//   user_app_id: {
-//     user_id: USER_ID,
-//     app_id: APP_ID,
-//   },
-//   inputs: [
-//     {
-//       data: {
-//         image: {
-//           url: IMAGE_URL,
-//           // "base64": IMAGE_BYTES_STRING
-//         },
-//       },
-//     },
-//   ],
-// });
-// const requestOptions = {
-//   method: 'POST',
-//   headers: {
-//     Accept: 'application/json',
-//     Authorization: 'Key ' + PAT,
-//   },
-//   body: raw,
-// };
-// console.log(Clarifai);
 const stub = ClarifaiStub.grpc();
 
 const metadata = new grpc.Metadata();
