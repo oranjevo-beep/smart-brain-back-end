@@ -7,14 +7,10 @@ const bcrypt = require('bcrypt');
 const cors = require('cors');
 const PORT = process.env.PORT || 3000;
 const app = express();
-app.use(
-  cors({
-    origin: 'https://oranjevo-beep.github.io',
-  })
-);
+
 app.use(express.json());
 app.use(bodyParser.json());
-
+app.use(cors());
 const db = knex({
   client: 'pg',
   connection: {
